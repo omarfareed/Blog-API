@@ -27,6 +27,12 @@ app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
 
+app.use((err, req, res, next) => {
+  res.status(err.statusCode || 500).json({
+    status: err.status || "error",
+    message: err.message || "something went wrong",
+  });
+});
 app.listen(port, () => {
-  console.log(`server is listening on port ${port}`);
+  console.log(`listening on port ${port}`);
 });
