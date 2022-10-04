@@ -4,7 +4,9 @@
 
 ## For Api routes and details check [this](https://app.swaggerhub.com/apis/FAREEDOMAR159_1/swagger-blog_app_open_api_1_0_0/1.0.0)
 
-![quick image](./images/routes.png)
+# ![quick image](./images/routes.png)
+
+## For Swagger documentation for more api details see [this link](https://app.swaggerhub.com/apis/FAREEDOMAR159_1/swagger-blog_app_open_api_1_0_0/1.0.0)
 
 ## Description
 
