@@ -18,6 +18,7 @@ exports.createPost = catchAsync(async (req, res, next) => {
 
 exports.getPost = catchAsync(async (req, res, next) => {
   const post = await Post.findById(req.params.postId);
+  if (!post) next(new AppError("wrong post id", 404));
   res.status(200).json({ status: "success", data: { post } });
 });
 
@@ -27,7 +28,7 @@ exports.getAllPosts = catchAsync(async (req, res, next) => {
   if (!userId) posts = await Post.find();
   else if (mongoose.Types.ObjectId.isValid(userId))
     posts = await Post.find({ owner: userId });
-  else return next(new AppError("invalid user id", 401));
+  else return next(new AppError("invalid user id", 404));
   res.status(200).json({ status: "success", data: { posts } });
 });
 
@@ -41,5 +42,5 @@ exports.deleteUserPost = catchAsync(async (req, res, next) => {
       new AppError("you are not authorized to delete this post", 403)
     );
   post.delete();
-  res.status(201).json({ status: "success" });
+  res.status(204).json({ status: "success" });
 });
