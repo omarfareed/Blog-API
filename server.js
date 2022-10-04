@@ -24,7 +24,12 @@ app.use(cookieParser());
 app.use("/", authRouter);
 app.use("/post/", postRouter);
 app.all("*", (req, res, next) => {
-  next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
+  next(
+    new AppError(
+      `Can't find ${req.method} ${req.originalUrl} on this server!`,
+      404
+    )
+  );
 });
 
 app.use((err, req, res, next) => {
