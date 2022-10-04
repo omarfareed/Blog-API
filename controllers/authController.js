@@ -40,13 +40,14 @@ const createToken = (user, statusCode, res) => {
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
-  const user = await User.findOne({ email });
+  const user = await User.findOne({ email }).select("+password");
   if (!user?.correctPassword(password, user.password)) {
     return res.status(500).json({
       status: "error",
       message: "wrong email or password",
     });
   }
+  user.password = undefined;
   createToken(user, 201, res);
 });
 exports.signup = catchAsync(async (req, res, next) => {
