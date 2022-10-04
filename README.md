@@ -1,5 +1,9 @@
 # Blog API application
 
+## to try the api follow ![this link](https://omar-blog-api.onrender.com/post)
+
+## For Swagger documentation for more api details see ![this link](https://app.swaggerhub.com/apis/FAREEDOMAR159_1/swagger-blog_app_open_api_1_0_0/1.0.0)
+
 ## Description
 
 this is a simple api as your blog for posts

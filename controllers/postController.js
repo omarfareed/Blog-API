@@ -18,7 +18,7 @@ exports.createPost = catchAsync(async (req, res, next) => {
 
 exports.getPost = catchAsync(async (req, res, next) => {
   const post = await Post.findById(req.params.postId);
-  if (!post) return next(new AppError("wrong post id", 404));
+  if (!post) return next(new AppError("wrong post id", 400));
   res.status(200).json({ status: "success", data: { post } });
 });
 
